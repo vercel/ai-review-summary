@@ -4,7 +4,9 @@ import { OpenAIStream, StreamingTextResponse } from "ai";
 import { Product } from "./types";
 
 if (!process.env.PERPLEXITY_API_KEY) {
-  throw new Error("PERPLEXITY_API_KEY is required");
+  throw new Error(
+    "PERPLEXITY_API_KEY environment variable is required. You can get this via https://vercel.com/docs/integrations/ai"
+  );
 }
 const perplexity = new OpenAI({
   apiKey: process.env.PERPLEXITY_API_KEY || "",
