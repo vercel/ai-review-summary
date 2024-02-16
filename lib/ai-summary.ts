@@ -3,12 +3,12 @@ import OpenAI from "openai";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { Product } from "./types";
 
-if (!process.env.FIREWORKS_API_KEY) {
-  throw new Error("FIREWORKS_API_KEY is required");
+if (!process.env.PERPLEXITY_API_KEY) {
+  throw new Error("PERPLEXITY_API_KEY is required");
 }
-const fireworks = new OpenAI({
-  baseURL: "https://api.fireworks.ai/inference/v1",
-  apiKey: process.env.FIREWORKS_API_KEY!,
+const perplexity = new OpenAI({
+  apiKey: process.env.PERPLEXITY_API_KEY || "",
+  baseURL: "https://api.perplexity.ai",
 });
 
 export async function summarizeReviews(product: Product) {
@@ -38,7 +38,7 @@ ${product.reviews
   .join("\n\n")}`;
 
   const query = {
-    model: "accounts/fireworks/models/mistral-7b-instruct-4k",
+    model: "pplx-7b-chat",
     stream: true,
     messages: buildPrompt(prompt),
     max_tokens: 1000,
@@ -48,8 +48,7 @@ ${product.reviews
   } as const;
 
   return unstable_cache(async () => {
-    // Request the Fireworks API for the response based on the prompt
-    const response = await fireworks.chat.completions.create(query);
+    const response = await perplexity.chat.completions.create(query);
 
     // Convert the response into a friendly text-stream
     const stream = OpenAIStream(response);
@@ -74,3 +73,5 @@ function buildPrompt(prompt: string) {
     content: message,
   }));
 }
+
+function getAIService() {}
