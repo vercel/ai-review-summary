@@ -1,7 +1,6 @@
-import { Product, Review } from "@/lib/types";
-import { NextRequest, NextResponse } from "next/server";
+import { Product } from "./types";
 
-const productsReviews: Record<string, Product> = {
+export const sampleProductsReviews: Record<string, Product> = {
   mower: {
     name: "Mower3000",
     reviews: [
@@ -153,12 +152,3 @@ const productsReviews: Record<string, Product> = {
     ],
   },
 };
-
-export function GET(request: NextRequest) {
-  const productId = request.nextUrl.searchParams.get("productId") || "mower";
-  const reviews = productsReviews[productId];
-  if (!reviews) {
-    return new Response("Product not found", { status: 404 });
-  }
-  return NextResponse.json(reviews);
-}
