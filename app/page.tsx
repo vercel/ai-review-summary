@@ -19,7 +19,12 @@ async function getProduct() {
     origin = `http://${headers().get("host") || "localhost:3000"}`;
   }
   console.log(`${origin}/api/sample-reviews?productId=mower`);
-  const response = await fetch(`${origin}/api/sample-reviews?productId=mower`);
+  const response = await fetch(`${origin}/api/sample-reviews?productId=mower`, {
+    headers: {
+      "x-vercel-protection-bypass":
+        process.env.VERCEL_AUTOMATION_BYPASS_SECRET || "",
+    },
+  });
   if (response.status === 404) {
     notFound();
   }

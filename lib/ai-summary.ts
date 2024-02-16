@@ -3,6 +3,9 @@ import OpenAI from "openai";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { Product } from "./types";
 
+if (!process.env.FIREWORKS_API_KEY) {
+  throw new Error("FIREWORKS_API_KEY is required");
+}
 const fireworks = new OpenAI({
   baseURL: "https://api.fireworks.ai/inference/v1",
   apiKey: process.env.FIREWORKS_API_KEY!,
