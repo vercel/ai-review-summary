@@ -1,5 +1,4 @@
 import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
 import { Product, Review as ReviewType } from "@/lib/types";
 import ms from "ms";
 import { FiveStarRating } from "./five-star-rating";

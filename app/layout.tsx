@@ -31,6 +31,18 @@ export default function RootLayout({
             </Link>
           ))}
         </nav>
+        <p className="text-center text-gray-500 mb-8">
+          This is a demo of AI-generated summaries of customer reviews. To learn
+          more, see the{" "}
+          <Link
+            className="underline"
+            target="_blank"
+            href="https://vercel.com/templates/next.js/customer-reviews-ai-summary-nextjs-vercel"
+          >
+            complete template
+          </Link>
+          .{"\n          "}
+        </p>
         <main className="pt-6">{children}</main>
       </body>
     </html>
