@@ -12,7 +12,21 @@ const fireworks = new OpenAI({
 });
 
 export async function summarizeReviews(product: Product) {
-  const prompt = `Write a 30 word pitch for why a person who has in their shopping cart should also purchase the "${product.name}"`;
+  const prompt = `Write a summary of the reviews for the ${
+    product.name
+  } product.
+Your goal is to highlight the most common themes and sentiments expressed by customers.
+If multiple themes are present, try to capture the most important ones.
+If no patterns emerge but there is a shared sentiment, capture that instead.
+Try to use natural language and keep the summary concise.
+Use a maximum of 4 sentences and 30 words.
+
+Start the summary with "Customers like…" or "Customers mention…"
+
+The customer reviews to summarize are as follows:
+${product.reviews
+  .map((review, i) => `Review ${i + 1}:\n${review.review}`)
+  .join("\n\n")}`;
 
   const query = {
     model: "accounts/fireworks/models/mistral-7b-instruct-4k",
