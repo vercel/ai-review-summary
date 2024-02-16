@@ -24,7 +24,7 @@ export async function AIReviewSummary({ product }: { product: Product }) {
           </CardDescription>
         </div>
         <div className="bg-gray-100 px-3 rounded-full flex items-center py-2 dark:bg-gray-800">
-          <FiveStarRating rating={averageRating} />
+          <FiveStarRating rating={Math.round(averageRating)} />
           <span className="text-sm ml-4 text-gray-500 dark:text-gray-400">
             {numberWithOneDecimal(averageRating)} out of 5
           </span>

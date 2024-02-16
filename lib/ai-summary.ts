@@ -12,6 +12,10 @@ const fireworks = new OpenAI({
 });
 
 export async function summarizeReviews(product: Product) {
+  const averageRating =
+    product.reviews.reduce((acc, review) => acc + review.stars, 0) /
+    product.reviews.length;
+
   const prompt = `Write a summary of the reviews for the ${
     product.name
   } product.
@@ -22,6 +26,11 @@ Try to use natural language and keep the summary concise.
 Use a maximum of 4 sentences and 30 words.
 
 Start the summary with "Customers like…" or "Customers mention…"
+
+The product's average rating is ${averageRating} out of 5 stars. Hit the following tone based on rating:
+- 1-2 stars: negative
+- 3 stars: neutral
+- 4-5 stars: positive
 
 The customer reviews to summarize are as follows:
 ${product.reviews

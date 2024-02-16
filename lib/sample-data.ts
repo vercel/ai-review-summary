@@ -1,4 +1,13 @@
+import { notFound } from "next/navigation";
 import { Product } from "./types";
+
+export async function getProduct(id: string) {
+  const product = sampleProductsReviews[id] as Product;
+  if (!product) {
+    notFound();
+  }
+  return product;
+}
 
 export const sampleProductsReviews: Record<string, Product> = {
   mower: {
@@ -76,78 +85,153 @@ export const sampleProductsReviews: Record<string, Product> = {
       },
     ],
   },
-  sample1: {
-    name: "Sample Product 1",
+  ecoBright: {
+    name: "Smart LED",
     reviews: [
       {
         review:
-          "The device feels a bit flimsy and stopped working after a month of use. Customer service was slow to respond, leaving me disappointed.",
-        authorName: "Alex Johnson",
+          "The EcoBright 360 didn't live up to its promise of lasting 20,000 hours. Mine burnt out in less than 6 months with moderate use. Disappointed.",
+        authorName: "Jenna M.",
         date: "2024-01-15",
-        stars: 1,
-      },
-      {
-        review:
-          "Not what I expected based on the description. The color was off and it didn't fit well with my other gadgets. It works okay, but I wouldn't buy it again.",
-        authorName: "Samantha Lee",
-        date: "2024-02-01",
         stars: 2,
       },
       {
         review:
-          "The software updates are infrequent, causing some features to become outdated quickly. It does the job, but there are definitely better options out there.",
-        authorName: "Michael Brown",
+          "While the energy savings are noticeable, the light emitted is a bit too harsh for my living room. Not quite the warm glow I was hoping for.",
+        authorName: "Gregory F.",
         date: "2024-01-20",
-        stars: 2,
-      },
-      {
-        review:
-          "It arrived on time and was well-packaged. However, the setup instructions were a bit confusing. Took me longer than expected to get it up and running.",
-        authorName: "Emily Wilson",
-        date: "2024-01-10",
         stars: 3,
       },
       {
         review:
-          "For the price, this is a decent buy. It has a few quirks, like occasionally slow response times, but it's reliable overall. Satisfied with my purchase.",
-        authorName: "David Smith",
+          "Decent bulb for the price, but the smart features are a bit clunky to use. Sometimes it doesn't respond to the app as quickly as I'd like.",
+        authorName: "Samantha K.",
         date: "2024-02-05",
         stars: 3,
       },
       {
         review:
-          "The product is pretty good for everyday use. I've had it for a few weeks now and haven't encountered any major issues. Battery life could be better though.",
-        authorName: "Jessica Miller",
-        date: "2024-01-25",
-        stars: 4,
-      },
-      {
-        review:
-          "I was pleasantly surprised by the build quality given the price point. It's not perfect, but it performs well for most tasks. Would recommend to others looking for a budget-friendly option.",
-        authorName: "Chris Garcia",
-        date: "2024-01-18",
-        stars: 4,
-      },
-      {
-        review:
-          "This product exceeded my expectations. It's user-friendly and integrates well with my other devices. A great find that I've been recommending to all my friends.",
-        authorName: "Olivia Martinez",
-        date: "2024-02-08",
-        stars: 5,
-      },
-      {
-        review:
-          "Absolutely love this product! It's been a game changer for my daily routine. High-quality, durable, and the customer support team is fantastic. Definitely worth every penny.",
-        authorName: "Daniel Gonzalez",
-        date: "2024-01-05",
-        stars: 5,
-      },
-      {
-        review:
-          "Good value for the price. It's not without its flaws, but overall it does what it's supposed to do. The app could use some improvements, but I'm happy with my purchase.",
-        authorName: "Karen Hernandez",
+          "The app setup was a breeze, and I love being able to control the lighting from anywhere in the house. However, the bulb does not always connect to WiFi on the first try.",
+        authorName: "Alex P.",
         date: "2024-02-10",
+        stars: 4,
+      },
+      {
+        review:
+          "This bulb is great for its price point. Energy-efficient and mostly reliable. Just wish the brightness was a tad higher for outdoor use.",
+        authorName: "Michelle T.",
+        date: "2024-02-12",
         stars: 3,
+      },
+      {
+        review:
+          "The connectivity with my smart home devices is hit or miss, which is frustrating. I expected better integration for a 'smart' bulb.",
+        authorName: "Leonard W.",
+        date: "2024-02-14",
+        stars: 2,
+      },
+      {
+        review:
+          "Fantastic product! The EcoBright 360 has completely transformed the ambiance of my home. The scheduling feature is perfect for my routine.",
+        authorName: "Isabella R.",
+        date: "2024-02-15",
+        stars: 5,
+      },
+      {
+        review:
+          "Very disappointed. The bulb flickers occasionally, and resetting it doesn't seem to fix the issue. Not what I expected for the price.",
+        authorName: "Derek S.",
+        date: "2024-02-16",
+        stars: 1,
+      },
+      {
+        review:
+          "I'm impressed with the energy efficiency and how easy it was to install and use. A great addition to my smart home setup.",
+        authorName: "Nora Q.",
+        date: "2024-02-17",
+        stars: 4,
+      },
+      {
+        review:
+          "Light quality is superb, and the dimming feature works like a charm. Makes for a cozy atmosphere in the evenings. A bit pricey, but worth it.",
+        authorName: "Carlos D.",
+        date: "2024-02-18",
+        stars: 4,
+      },
+    ],
+  },
+  ecoSmart: {
+    name: "Tankless Water Heater",
+    reviews: [
+      {
+        review:
+          "Absolutely love the EcoSmart ECO 11! It was surprisingly easy to install and it's been a game changer for our utility bills. The compact size is perfect for our small home, and we've enjoyed endless hot water without any issues. Highly recommend for anyone looking to save on energy costs.",
+        authorName: "Jessica M.",
+        date: "2024-01-15",
+        stars: 5,
+      },
+      {
+        review:
+          "The EcoSmart tankless water heater is fantastic. I noticed a significant decrease in my electric bill, and it's great not having to wait for water to heat up. The temperature control is precise and easy to adjust. Great product for the environmentally conscious homeowner.",
+        authorName: "Brian K.",
+        date: "2024-02-01",
+        stars: 5,
+      },
+      {
+        review:
+          "I was a bit skeptical about switching to a tankless water heater, but the EcoSmart ECO 11 has exceeded my expectations. Installation was straightforward, and the performance has been flawless. It's efficient, saves space, and provides hot water on demand. What more could you ask for?",
+        authorName: "Samantha L.",
+        date: "2023-12-20",
+        stars: 5,
+      },
+      {
+        review:
+          "This water heater is a solid choice. It heats water quickly and is much more efficient than our old tank model. We've seen a drop in our electricity use, and I appreciate the modern, compact design. It fits perfectly in our utility closet.",
+        authorName: "Derek H.",
+        date: "2024-01-28",
+        stars: 4,
+      },
+      {
+        review:
+          "I've had the EcoSmart ECO 11 for a few months now, and it's been pretty good. The installation process was a bit of a hassle, but once set up, it's been working well. The temperature consistency is better than I expected, though I wish it were a little faster in heating up.",
+        authorName: "Clara N.",
+        date: "2023-11-05",
+        stars: 4,
+      },
+      {
+        review:
+          "The EcoSmart ECO 11 is a decent upgrade from a traditional water heater. The energy savings are noticeable, and it's convenient to have hot water on demand. However, the initial cost and installation might be a deterrent for some. Overall, a good investment if you're planning to stay in your home for a while.",
+        authorName: "Alex F.",
+        date: "2024-02-10",
+        stars: 4,
+      },
+      {
+        review:
+          "I was excited about the energy efficiency of the EcoSmart ECO 11, and it hasn't disappointed. It does take a bit of getting used to, especially figuring out the right temperature settings, but once you do, it's great. Saves space and money in the long run.",
+        authorName: "Nina P.",
+        date: "2023-12-01",
+        stars: 4,
+      },
+      {
+        review:
+          "The EcoSmart ECO 11 is a game changer. My water heating bills have plummeted, and the space savings is a huge plus. It's incredibly efficient, and I've had no issues with water temperature. Definitely one of the best home improvements I've made.",
+        authorName: "Mark S.",
+        date: "2024-01-10",
+        stars: 5,
+      },
+      {
+        review:
+          "I'm thrilled with my purchase of the EcoSmart ECO 11. It's environmentally friendly, which is very important to me, and the performance has been outstanding. Hot water is always available when I need it, and the unit itself is sleek and unobtrusive.",
+        authorName: "Lori D.",
+        date: "2023-11-15",
+        stars: 5,
+      },
+      {
+        review:
+          "The EcoSmart ECO 11 tankless water heater is incredible. Installation was easier than anticipated, and the impact on our energy bill was noticeable right away. The consistent hot water supply is exactly what our large family needed. Highly recommend this to anyone looking to make the switch to tankless.",
+        authorName: "Tom G.",
+        date: "2024-02-05",
+        stars: 5,
       },
     ],
   },

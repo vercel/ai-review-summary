@@ -12,7 +12,6 @@ export async function Reviews({ product }: { product: Product }) {
       {product.reviews.map((review) => (
         <div key={review.review}>
           <Review key={review.review} review={review} />
-          <Separator />
         </div>
       ))}
     </div>
