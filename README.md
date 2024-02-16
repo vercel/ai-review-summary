@@ -5,6 +5,8 @@ It then displays the summary and the reviews in a demo UI.
 
 A deployed version can be found here https://review-summary.vercel.app/
 
+[Install the template on Vercel](https://vercel.com/templates/next.js/customer-reviews-ai-summary-nextjs-vercel)
+
 ## Getting Started
 
 First, run the development server:
