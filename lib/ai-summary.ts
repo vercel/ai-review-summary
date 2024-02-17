@@ -50,12 +50,7 @@ ${product.reviews
   const query = {
     model: "pplx-7b-chat",
     stream: true,
-    messages: [
-      {
-        role: "user" as const,
-        content: prompt,
-      },
-    ],
+    messages: buildPrompt(prompt),
     max_tokens: 1000,
     temperature: 0.75,
     top_p: 1,
@@ -84,4 +79,13 @@ ${product.reviews
     process.env.VERCEL_BRANCH_URL || "",
     process.env.NODE_ENV || "",
   ])();
+}
+
+function buildPrompt(prompt: string): [{ role: "user"; content: string }] {
+  return [
+    {
+      role: "user",
+      content: prompt,
+    },
+  ];
 }
