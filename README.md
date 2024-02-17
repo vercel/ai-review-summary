@@ -1,9 +1,12 @@
-This is a demo of AI generated summaries of customer reviews.
+This is a demo of AI generated summaries of customer reviews for an e-commerce storefront.
 
-The demo takes a set of customer reviews, and uses an LLM to create summaries of those models.
+The demo takes a set of customer reviews, and uses an LLM to create summaries of those reviews.
 It then displays the summary and the reviews in a demo UI.
 
-A deployed version can be found here https://review-summary.vercel.app/
+The benefit of such an AI summary is that the user can get a quick overview of the sentiment
+of reviewers of the product without reading them all.
+
+[A deployed version can be found here.](https://review-summary.vercel.app/)
 
 [Install the template on Vercel](https://vercel.com/templates/next.js/customer-reviews-ai-summary-nextjs-vercel)
 
